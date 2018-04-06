@@ -46,6 +46,7 @@ post '/sign-in' do
     @user = User.where(fname: params[:fname]).first
     if @user.password == params[:password]
         session[:user_id] = @user.id
+        current_user
         #flash[:notice] = "success!"
         redirect "/profile/#{@user.id}"
     else
