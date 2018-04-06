@@ -1,0 +1,49 @@
+class User < ActiveRecord::Base
+    has_many :posts
+end
+
+class Post < ActiveRecord::Base
+    belongs_to :user
+end
+
+/////////////////////////////////////////////
+
+class CreatePostsTable < ActiveRecord::Migration[5.1]
+  def change 
+    create_table :posts do |t|
+      t.string :title
+      t.text :content, :limit => 150
+      t.integer :user_id
+    end
+  end
+end
+
+class CreateUsersTable < ActiveRecord::Migration[5.1]
+  def change
+    create_table :users do |t|
+      t.string :fname
+      t.string :lname
+      t.string :email
+    end
+  end
+end
+
+/////////////////////////////////////////////////
+
+#rake db:seed
+
+#user_list.each do |fname, lname, password, age|
+    #User.create(fname: fname, lname: lname, password: password, age: age)
+#end
+
+
+
+
+#rake db:seed
+#rake db:schema:load
+
+#rake db:reset
+
+
+
+
