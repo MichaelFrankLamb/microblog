@@ -17,6 +17,12 @@ get '/' do
     erb :home
 end 
 
+get '/profile' do
+    current_user
+    @posts = @current_user.posts
+    erb :profile
+end
+
 get '/profile/:id' do
     @user = User.find(params[:id])
     @posts = @user.posts
