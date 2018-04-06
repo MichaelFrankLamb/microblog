@@ -10,7 +10,7 @@
 <body>
 
 
-    <h2>Welcome to your profile <%=@user.fname %></h3>
+    <h2>Welcome to your profile <%=current_user.fname%></h2>
 
     <% @posts.each do |post| %>
         <h3><%= post.title %></h3>

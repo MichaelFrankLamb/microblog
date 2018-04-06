@@ -39,14 +39,15 @@ post '/users/new' do
     #{"post"=>{"fname"=>"Han", "lname"=>"Solo", "age"=>"54"}, "captures"=>[]} in irb
     puts "aaaaaaaa"
     User.create(params[:post])
-    redirect '/'
+    #@user = User.where(id: params[:id])
+    #session[:user_id] = @user.id
+    redirect "/"
 end
 
 post '/sign-in' do
     @user = User.where(fname: params[:fname]).first
     if @user.password == params[:password]
         session[:user_id] = @user.id
-        current_user
         #flash[:notice] = "success!"
         redirect "/profile/#{@user.id}"
     else

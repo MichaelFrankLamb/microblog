@@ -16,6 +16,12 @@
         <li><a href="/posts">Posts</a></li>
     </ul>
 
+    <% if current_user == nil %>
+        <p>Not signed in </p>
+     <% else %>
+        <p>Signed in as: </span class="layout-user"><%=current_user.fname %> <%=current_user.lname %></span></p>
+    <% end%>
+
 <%=yield%>
     
 </body>
