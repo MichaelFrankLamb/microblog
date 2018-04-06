@@ -10,7 +10,16 @@
 <body>
 
 
-    <h2>Welcome to your profile <%=@user.fname %></h3>
+    <h2>Welcome to your profile <%=current_user.fname%></h2>
+
+    <h3>Create A Post</h3>
+
+    <form  class="" method="post" action="/newpost">
+        <input type="text" name="[post]title" placeholder="Title">
+        <input type="text" name="[post]content" placeholder="Content">
+        <input type="text" name="[post]user_id" value="<%= current_user.id %>" style="display:none">
+        <input type="submit" name="" value="Submit">
+    </form>
 
     <% @posts.each do |post| %>
         <h3><%= post.title %></h3>

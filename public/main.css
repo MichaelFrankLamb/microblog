@@ -1,3 +1,7 @@
 .nav li {
     display: inline;
 }
+
+.layout-user {
+    font-weight: bold;
+}
