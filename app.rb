@@ -55,3 +55,8 @@ post '/sign-in' do
         redirect '/'
     end
 end
+
+post '/sign-out' do
+    session[:user_id] = nil
+    redirect '/'
+end
