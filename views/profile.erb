@@ -28,6 +28,11 @@
         <div>
 
             <h3><%= post.id %>. <%= post.title %></h3>
+            <a href="/posts/<%= post.id %>/edit">Edit</a>
+            <form action="/posts/<%= post.id %>" method="POST">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" value="Delete This Post">
+            </form>
             <p> <%= post.content %> </p>
 
         </div>
