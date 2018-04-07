@@ -40,14 +40,10 @@ get '/users' do
 end 
 
 post '/users/new' do
-    puts"kkkkkkkkkkk"
     puts params.inspect
-    #{"post"=>{"fname"=>"Han", "lname"=>"Solo", "age"=>"54"}, "captures"=>[]} in irb
-    puts "aaaaaaaa"
     User.create(params[:post])
-    #@user = User.where(id: params[:id])
-    #session[:user_id] = @user.id
-    redirect "/"
+    session[:user_id] = User.last.id
+    redirect "/profile"
 end
 
 post '/sign-in' do
