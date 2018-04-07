@@ -5,6 +5,7 @@ require 'sinatra/flash'
 enable :sessions
 
 set :database, "sqlite3:second_app.sqlite3"
+set :method_override, true
 
 def current_user
     if session[:user_id]
@@ -28,6 +29,27 @@ get '/profile/:id' do
     @posts = @user.posts
     erb :profile
 end
+
+# Edit post
+get '/posts/:id/edit' do   
+	@post = Post.find(params[:id])
+	erb :edit
+end
+
+# Update post
+put "/posts/:id" do
+    @post = Post.find(params[:id])
+    @post.update(params[:post])
+    redirect "/profile"
+end
+
+# delete post
+delete '/posts/:id' do  
+	@post = Post.find(params[:id])
+	@post.destroy
+	redirect "/profile"
+end
+
 
 get '/posts' do
     @posts = Post.all
