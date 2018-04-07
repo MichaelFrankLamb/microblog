@@ -13,29 +13,35 @@
 
 <div>
 
+    
+
+<% if current_user == nil %>
     <h3>Please create an account</h3>
 
-    <form  class="" method="post" action="/users/new">
-        <input type="text" name="[post]fname" placeholder="First Name">
-        <input type="text" name="[post]lname" placeholder="Last Name">
-        <input type="text" name="[post]email" placeholder="Email">
-        <input type="text" name="[post]password" placeholder="Password">
-        <input type="submit" name="" value="Submit">
-    </form>
+        <form  class="" method="post" action="/users/new">
+            <input type="text" name="[post]fname" placeholder="First Name">
+            <input type="text" name="[post]lname" placeholder="Last Name">
+            <input type="text" name="[post]email" placeholder="Email">
+            <input type="text" name="[post]password" placeholder="Password">
+            <input type="submit" name="" value="Submit">
+        </form>
 
-</div>
+    </div>
+<% end %>
 
-<div>
+<% if current_user == nil %>
+    <div>
 
-    <h3>Sign In</h3>
+        <h3>Sign In</h3>
 
-    <form method="post" action="/sign-in">
-        <input type="text" name="fname" placeholder="First Name">
-        <input type="text" name="password" placeholder="Password">
-        <input type="submit" value="Submit">
-    </form>
+        <form method="post" action="/sign-in">
+            <input type="text" name="fname" placeholder="First Name">
+            <input type="text" name="password" placeholder="Password">
+            <input type="submit" value="Submit">
+        </form>
 
-</div>
+    </div>
+<% end %>
 
 
 
