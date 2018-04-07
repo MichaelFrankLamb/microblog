@@ -30,6 +30,22 @@ get '/profile/:id' do
     erb :profile
 end
 
+# Edit user profile
+get '/profile/:id/edit' do
+    @user = User.find(params[:id])
+    erb :editprofile
+end
+
+# Update user profile
+put '/profile/:id' do
+    @user = User.find(params[:id])  ### Getting error after updating profile info pointing to this line
+    @user.update(params[:post])  
+    redirect "/profile"
+end
+
+
+
+
 # Edit post
 get '/posts/:id/edit' do   
 	@post = Post.find(params[:id])
@@ -37,7 +53,7 @@ get '/posts/:id/edit' do
 end
 
 # Update post
-put "/posts/:id" do
+put '/posts/:id' do
     @post = Post.find(params[:id])
     @post.update(params[:post])
     redirect "/profile"
