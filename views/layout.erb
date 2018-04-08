@@ -20,6 +20,7 @@
         <li><a href="/users">Users</a></li>
         <li><a href="/posts">Posts</a></li>
         <%if current_user %><else><a href="/profile">Profile</a></li><%end%>
+        <%if current_user %><else><a href="/profile/<%=current_user.id %>/edit">Edit Your Profile</a></li><%end%>
     </ul>
 
     <% if current_user == nil %>
