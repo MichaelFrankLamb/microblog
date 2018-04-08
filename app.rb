@@ -38,12 +38,18 @@ end
 
 # Update user profile
 put '/profile/:id' do
-    @user = User.find(params[:id])  ### Getting error after updating profile info pointing to this line
+    @user = User.find(params[:id])  
     @user.update(params[:post])  
     redirect "/profile"
 end
 
-
+# Delete user profile
+delete '/profile/:id' do
+    @user = User.find(params[:id])
+    @user.destroy
+    session[:user_id] = nil
+    redirect '/'
+end
 
 
 # Edit post
@@ -106,3 +112,13 @@ post '/newpost' do
     Post.create(params[:post])
     redirect "/profile/#{@current_user.id}"
 end
+
+
+
+
+
+# put '/profile/:id' do
+#     @user = User.find(params[:id])  ### Getting error after updating profile info pointing to this line
+#     @user.update(params[:post])  
+#     redirect "/profile"
+# end
