@@ -17,7 +17,7 @@
 
     <ul class="nav">
         <li><a href="/">Home</a></li>
-        <li><a href="/users">Users</a></li>
+        <%if current_user %><else><a href="/users">Users</a></li><%end%>
         <li><a href="/posts">Posts</a></li>
         <%if current_user %><else><a href="/profile">Profile</a></li><%end%>
         <%if current_user %><else><a href="/profile/<%=current_user.id %>/edit">Edit Your Profile</a></li><%end%>
@@ -29,7 +29,7 @@
 
      <% else %>
 
-        <p>Signed in as: </span class="layout-user"><%=current_user.fname %> <%=current_user.lname %></span></p>
+        <h2>Hey there <%= current_user.fname %>, we're glad you're here!</h2>
 
         <form method="post" action="/sign-out">
             <input type="submit" name="" value="Sign Out">

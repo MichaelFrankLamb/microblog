@@ -9,9 +9,6 @@
 </head>
 <body>
 
-
-    <h2>Hey there <%= current_user.fname %>, we're glad you're here!</h2>
-
     <h3>Create A Post</h3>
 
 <div>
@@ -22,6 +19,8 @@
         <input type="submit" name="" value="Submit">
     </form>
 </div>
+
+<h2><%if @user == nil%><%=current_user.fname%><%else%><%= @user.fname %><%end%>'s' profile.</h2>
 
 <div>
     <% @posts.reverse.each do |post| %>
