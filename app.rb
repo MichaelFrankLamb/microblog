@@ -104,7 +104,7 @@ post '/sign-in' do
     if @user.password == params[:password]
         session[:user_id] = @user.id
         #flash[:notice] = "success!"
-        redirect "/profile/#{@user.id}"
+        redirect "/profile"
     else
         #flash[:notice] = "Fail"
         redirect '/'
@@ -119,7 +119,7 @@ end
 post '/newpost' do
     current_user
     Post.create(params[:post])
-    redirect "/profile/#{@current_user.id}"
+    redirect "/profile"
 end
 
 
