@@ -17,7 +17,7 @@
 <div>
     <form  class="" method="post" action="/newpost">
         <input type="text" name="[post]title" placeholder="Title">
-        <input type="text" name="[post]content" placeholder="Content">
+        <input type="text" name="[post]content" placeholder="Content" maxlength="150">
         <input type="text" name="[post]user_id" value="<%= current_user.id %>" style="display:none">
         <input type="submit" name="" value="Submit">
     </form>
