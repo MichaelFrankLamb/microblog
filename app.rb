@@ -13,6 +13,7 @@ def current_user
     end
 end
 
+
 get '/' do
 
     erb :home
@@ -45,7 +46,14 @@ end
 
 # Delete user profile
 delete '/profile/:id' do
+    @posts = Post.all
     @user = User.find(params[:id])
+    @posts.each do |post|
+         if post.user_id == @user.id
+            post.update( :user_id => 3)
+         else
+         end
+    end
     @user.destroy
     session[:user_id] = nil
     redirect '/'
@@ -74,6 +82,7 @@ end
 
 
 get '/posts' do
+    @users = User.all
     @posts = Post.all
     erb :posts
 end

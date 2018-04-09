@@ -11,9 +11,10 @@
     </h2>
 
         <% @posts.reverse.each do |post| %>
-            <h3><%= post.id %>. <%= post.title %></h3>
+            <h3><%= post.id %>. <%= post.title %></h3> <h4>By: <%=post.user.fname%></h4>
             <p><%= post.content %></p>
         <%end %>
    
 </body>
 </html>
+
