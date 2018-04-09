@@ -9,19 +9,18 @@
 </head>
 <body>
 
-
-    <h2>Hey there <%= current_user.fname %>, we're glad you're here!</h2>
-
     <h3>Create A Post</h3>
 
 <div>
     <form  class="" method="post" action="/newpost">
         <input type="text" name="[post]title" placeholder="Title">
-        <input type="text" name="[post]content" placeholder="Content">
+        <input type="text" name="[post]content" placeholder="Content" maxlength="150">
         <input type="text" name="[post]user_id" value="<%= current_user.id %>" style="display:none">
         <input type="submit" name="" value="Submit">
     </form>
 </div>
+
+<h2><%if @user == nil%><%=current_user.fname%><%else%><%= @user.fname %><%end%>'s' profile.</h2>
 
 <div>
     <% @posts.reverse.each do |post| %>
