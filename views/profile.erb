@@ -9,6 +9,8 @@
 </head>
 <body>
 
+
+<%if @user == nil %>
     <h3>Create A Post</h3>
 
 <div>
@@ -19,28 +21,38 @@
         <input type="submit" name="" value="Submit">
     </form>
 </div>
+<%else%>
+<%end%>
 
 <h2><%if @user == nil%><%=current_user.fname%><%else%><%= @user.fname %><%end%>'s' profile.</h2>
 
+
+
 <div>
-    <% @posts.reverse.each do |post| %>
+
+
+<% @posts.reverse.each do |post| %>
         <div>
-
             <h3><%= post.id %>. <%= post.title %></h3>
-            <a href="/posts/<%= post.id %>/edit">Edit</a>
-            <form action="/posts/<%= post.id %>" method="POST">
-                <input type="hidden" name="_method" value="delete">
-                <input type="submit" value="Delete This Post">
-            </form>
+            <%if @user == nil %>
+                <a href="/posts/<%= post.id %>/edit">Edit</a>
+                <form action="/posts/<%= post.id %>" method="POST">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="submit" value="Delete This Post">
+                </form>
+            <%else%>
+            <%end%>
             <p> <%= post.content %> </p>
-
         </div>
-    <%end %>
+<%end%>
+
+<%if @user == nil %>
     <form action="/profile/<%= current_user.id %>" method="POST">
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete Your Account">
     </form>
-</div>
+    </div>
+<%end%>
 
 </body>
 </html>
