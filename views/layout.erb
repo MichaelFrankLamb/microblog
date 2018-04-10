@@ -2,42 +2,46 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>CODECAMPfeelz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/main.css" />
-    <script src="main.js"></script>
 </head>
 <body>
+<div id="layout-container">
 
-<div class="logo">
-    <img src="/logo.png"></img>
+    <div id="logodiv" class="logo">
+        <img src="/logo.png"></img>
+    </div>
+
+    <h1 id="welcome">Welcome to </h2>
+
+        <ul id="nav-grid" class="nav">
+            <li><a href="/">Home ||</a></li>
+            <%if current_user %><else><a href="/users">Users ||</a></li><%end%>
+            <li><a href="/posts">Posts</a></li>
+            <%if current_user %><else><a href="/profile">|| Profile ||</a></li><%end%>
+            <%if current_user %><else><a href="/profile/<%=current_user.id %>/edit">Edit Your Profile</a></li><%end%>
+        </ul>
+
+        <% if current_user == nil %>
+        <div id="not-signed-in">
+            <p>Not signed in </p>
+        </div>
+        <% else %>
+
+        <div id="greeting">
+            <h2>Hey there <%= current_user.fname %>, we're glad you're here!</h2>
+        </div>
+        <div id="sign-out">
+            <form method="post" action="/sign-out">
+                <input type="submit" name="" value="Sign Out">
+            </form>
+        </div>
+        <% end%>
+
+    <%=yield%>
 </div>
 
-<h1>Welcome</h2>
-
-    <ul class="nav">
-        <li><a href="/">Home</a></li>
-        <%if current_user %><else><a href="/users">Users</a></li><%end%>
-        <li><a href="/posts">Posts</a></li>
-        <%if current_user %><else><a href="/profile">Profile</a></li><%end%>
-        <%if current_user %><else><a href="/profile/<%=current_user.id %>/edit">Edit Your Profile</a></li><%end%>
-    </ul>
-
-    <% if current_user == nil %>
-
-        <p>Not signed in </p>
-
-     <% else %>
-
-        <h2>Hey there <%= current_user.fname %>, we're glad you're here!</h2>
-
-        <form method="post" action="/sign-out">
-            <input type="submit" name="" value="Sign Out">
-        </form>
-
-    <% end%>
-
-<%=yield%>
-    
+<%# <script src="main.js"></script> %>
 </body>
 </html>

@@ -1,19 +1,22 @@
-<html lang="en">
+<%# <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-</head>
+</head> %>
 <body>
-    <h1>Posts</h1>
-    
-    </h2>
+    <div id="posts-header">
+    <h2>`${ Conversation } `</h2>
+    </div>
+
+    <div id="posts-list">
 
         <% @posts.reverse.each do |post| %>
             <h3><%= post.id %>. <%= post.title %></h3> <h4>By: <%=post.user.fname%></h4>
             <p><%= post.content %></p>
         <%end %>
+    </div>
    
 </body>
 </html>

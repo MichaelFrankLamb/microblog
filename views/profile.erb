@@ -1,5 +1,5 @@
 <html>
-<head>
+<%# <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
@@ -7,13 +7,13 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
-<body>
+<body> %>
 
 
 <%if @user == nil %>
-    <h3>Create A Post</h3>
+    <h3 id="create-post">(Create A New Post) =></h3>
 
-<div>
+<div id="new-post-form">
     <form  class="" method="post" action="/newpost">
         <input type="text" name="[post]title" placeholder="Title">
         <input type="text" name="[post]content" placeholder="Content" maxlength="150">
@@ -24,13 +24,13 @@
 <%else%>
 <%end%>
 
-<h2><%if @user == nil%><%=current_user.fname%><%else%><%= @user.fname %><%end%>'s' profile.</h2>
+<h2 id="personalized-pf"><%if @user == nil%> {<%=current_user.fname%><%else%>{<%= @user.fname %><%end%>'s profile }</h2>
 
 
 
-<div>
+<div id="user-posts">
 
-
+<h3><%if @user == nil%> [<%=current_user.fname%><%else%>[<%= @user.fname %><%end%>'s Post History ]</h3>
 <% @posts.reverse.each do |post| %>
         <div>
             <h3><%= post.id %>. <%= post.title %></h3>
@@ -52,6 +52,7 @@
         <input type="submit" value="Delete Your Account">
     </form>
     </div>
+</div>
 <%end%>
 
 </body>

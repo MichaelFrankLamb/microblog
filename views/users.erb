@@ -1,18 +1,22 @@
 <html>
-<head>
-    <meta charset="utf-8" />
+<%# <head>
+    <%# <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<body>
-    <h2>Users</h2>
+    <script src="main.js"></script> %>
+<%# </head> %> 
+<%# <body> %>
+<div id="user-header">
+    <h2>([ All Users ]\ /_/s\A-Za-z0-9\\ /g)</h2>
+</div>
+<div id="user-list">
     <% @users.each do |user| %>
     <p><a href="/profile/<%= user.id %>"><%= user.fname %> <%= user.lname %></a></p>
     <p>Email: <%= user.email %> </p>
     <p>Password: <%= user.password %></p>
     <% end %>
+</div>
 </body>
 </html>
