@@ -1,17 +1,17 @@
 <html>
-<head>
+<%# <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
-</head>
+</head> %>
 
-    <h3>Update Your Profile Information</h3>
+    <h3 id="update-pf-text"># Update Your Profile Information</h3>
 
 
-<div>
+<div id="edit-pf-form">
     <form class="" method="post" action="/profile/<%= @user.id %>">
         <input type="hidden" name="_method" value="put">
         <input type="text" name="[post]fname" value="<%= @user.fname %>">
@@ -23,4 +23,4 @@
 </div>
 
 
-<body>
+</body>
